@@ -1,7 +1,0 @@
-config.py
-manage.py
---/app
-    /static
-    /talks
-    /templates
-    models.py
