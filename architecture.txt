@@ -1,8 +1,7 @@
-app.py
-auth.py
-decorators.py
-errors.py
-helpers.py
-models.py
-rate_limit.py
-token.py
+config.py
+manage.py
+--/app
+    /static
+    /talks
+    /templates
+    models.py
