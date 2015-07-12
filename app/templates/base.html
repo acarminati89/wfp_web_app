@@ -2,9 +2,18 @@
 
 {% blocktitle %}Talks{% endblock %}
 
-{% block navbar %} ...
+{% block navbar %}
+
+<a class="navbar-brand" href="{{ url_for('analytics.index') }}">Talks</a>
+
+<ul class="nav navbar-nav">
+    <li><a href="{{ url_for('analytics.index') }}">Home</a></li>
+    <li><a href="{{ url_for('analytics.user', username='admin') }}">Profile</a></li>
+</ul>
+
 
 {% endblock %}
+
 
 {% block content %}
 
