@@ -1,24 +1,22 @@
 {% extends "bootstrap/base.html" %}
 
-{% blocktitle %}Talks{% endblock %}
+{% block title %}WFP Analytics{% endblock %}
 
 {% block navbar %}
 
-<a class="navbar-brand" href="{{ url_for('analytics.index') }}">Talks</a>
+    <a class="navbar-brand" href="{{ url_for('analytics.index') }}">WFP Analytics</a>
 
-<ul class="nav navbar-nav">
-    <li><a href="{{ url_for('analytics.index') }}">Home</a></li>
-    <li><a href="{{ url_for('analytics.user', username='admin') }}">Profile</a></li>
-</ul>
-
+    <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('analytics.index') }}">Home</a></li>
+        <li><a href="{{ url_for('analytics.user', username='admin') }}">Profile</a></li>
+    </ul>
 
 {% endblock %}
 
-
 {% block content %}
 
-<div class="container">
-    {% block page_content %} {% endblock %}
-</div>
+    <div class="container">
+        {% block page_content %} {% endblock %}
+    </div>
 
 {% endblock %}
