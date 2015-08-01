@@ -1,22 +1,37 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %}WFP Analytics{% endblock %}
+{% block title %}WFP Management{% endblock %}
 
-{% block navbar %}
+{% block body %}
 
-    <a class="navbar-brand" href="{{ url_for('analytics.index') }}">WFP Analytics</a>
+    {% block navbar %}
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ url_for('analytics.index') }}">WFP Analytics</a>
 
-    <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('analytics.index') }}">Home</a></li>
-        <li><a href="{{ url_for('analytics.user', username='admin') }}">Profile</a></li>
-    </ul>
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url_for('analytics.index') }}">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    {% endblock %}
+
+    {% block content %}
+
+        <div class="container">
+            {% block page_content %} {% endblock %}
+        </div>
+
+    {% endblock %}
 
 {% endblock %}
 
-{% block content %}
-
-    <div class="container">
-        {% block page_content %} {% endblock %}
-    </div>
-
-{% endblock %}
+{%block scripts%}
+  {{super()}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="{{url_for('static', filename = "bootstrap.min.js")}}"></script>
+{%endblock%}

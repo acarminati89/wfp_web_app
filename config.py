@@ -6,12 +6,14 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
     SECRET_KEY = os.environ.get('SECRET_KEY') or 't0p s3cr3t'
+    POSTGRES_DATABASE_URI = os.environ.get('DEV_DATABASE_URL')
 
 class TestingConfig(Config):
     TESTING = True
+    POSTGRES_DATABASE_URI = os.environ.get('TEST_DATABASE_URL')
 
 class ProductionConfig(Config):
-    pass
+    POSTGRES_DATABASE_URI = os.environ.get('PRODUCTION_DATABASE_URL')
 
 config = {
     'development': DevelopmentConfig,
