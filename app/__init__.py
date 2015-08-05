@@ -16,4 +16,7 @@ def create_app(config_name):
     from .analytics import analytics as analytics_blueprint
     app.register_blueprint(analytics_blueprint)
 
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint)
+
     return app
