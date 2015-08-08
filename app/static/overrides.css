@@ -1,0 +1,23 @@
+/*---------------------------------
+	IMPORTS
+-----------------------------------*/
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,400);
+/*---------------------------------
+	OVERRIDES
+-----------------------------------*/
+body {
+    min-height: 2000px;
+    padding-top: 90px;
+}
+/*---------------------------------
+	LAYOUT
+-----------------------------------*/
+body{
+    background-image:url("imgs/grid.png");
+    background-repeat: repeat;
+}
+
+.featurette{
+    padding-left: 30px;
+    padding-right: 30px
+}
