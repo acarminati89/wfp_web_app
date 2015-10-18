@@ -1,5 +1,4 @@
 {% extends "bootstrap/base.html" %}
-{% block title %}WFP Management Analytics Portal{% endblock %}
 
 {% block head %}
     <meta charset="utf-8">
@@ -7,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="WFP Management Analytics Portal">
     <meta name="author" content="Anthony Carminati">
-    <title>Anthony Carminati</title>
+    <title>WFP Management Analytics Portal</title>
 
     {% block styles %}
         <link rel="stylesheet" href="{{url_for('static', filename="bootstrap.min.css")}}" >
@@ -29,7 +28,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">WFP Management Analytics Portal</a>
+          <a class="navbar-brand" href="#">WFP Management</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -72,22 +71,6 @@
               <i class="fa fa-circle"></i>This Website</br>
             </p>
         </div>
-      </div> <!-- /container -->
-      <div class="container">
-          <p class="text-center">
-            <span class="fa-stack fa-lg fa-5x">
-              <i class="fa fa-square-o fa-stack-2x"></i>
-              <i class="fa fa-twitter fa-stack-1x"></i>
-            </span>
-            <span class="fa-stack fa-lg fa-5x">
-              <i class="fa fa-square-o fa-stack-2x"></i>
-              <i class="fa fa-linkedin fa-stack-1x"></i>
-            </span>
-            <span class="fa-stack fa-lg fa-5x">
-              <i class="fa fa-square-o fa-stack-2x"></i>
-              <i class="fa fa-envelope-o fa-stack-1x"></i>
-            </span>
-          </p>
       </div> <!-- /container -->
   {% endblock %}
 {% endblock %}
