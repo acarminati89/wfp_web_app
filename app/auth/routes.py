@@ -2,8 +2,8 @@ from flask import render_template
 from . import auth
 import random
 # imports for Bokeh plotting
-import bokeh.plotting
-from bokeh.plotting import figure
+#import bokeh.plotting
+#from bokeh.plotting import figure
 from bokeh.resources import CDN
 from bokeh.embed import file_html, components
 # imports for matplotlib plotting
