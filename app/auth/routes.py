@@ -4,14 +4,14 @@ from . import auth
 import random
 # imports for Bokeh plotting
 #import bokeh.plotting
-#from bokeh.plotting import figure
-#from bokeh.resources import CDN
-#from bokeh.embed import file_html, components
+from bokeh.plotting import figure
+from bokeh.resources import CDN
+from bokeh.embed import file_html, components
 # imports for matplotlib plotting
-#import tempfile
-#import matplotlib
-#matplotlib.use('Agg') # this allows PNG plotting
-#import matplotlib.pyplot as plt
+import tempfile
+import matplotlib
+matplotlib.use('Agg') # this allows PNG plotting
+import matplotlib.pyplot as plt
 
 @auth.route('/login')
 def login():
