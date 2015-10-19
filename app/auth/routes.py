@@ -1,3 +1,4 @@
+#!/home/ubuntu/miniconda/bin/python
 from flask import render_template
 from . import auth
 import random
