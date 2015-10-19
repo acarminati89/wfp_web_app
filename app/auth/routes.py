@@ -14,6 +14,8 @@ import matplotlib.pyplot as plt
 
 @auth.route('/login')
 def login():
+ import sys
+ sys.version
  # generate some random integers, sorted
  exponent = .7+random.random()*.6
  dta = []
