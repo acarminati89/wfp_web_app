@@ -4,8 +4,8 @@ import random
 # imports for Bokeh plotting
 #import bokeh.plotting
 #from bokeh.plotting import figure
-from bokeh.resources import CDN
-from bokeh.embed import file_html, components
+#from bokeh.resources import CDN
+#from bokeh.embed import file_html, components
 # imports for matplotlib plotting
 import tempfile
 import matplotlib
