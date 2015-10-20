@@ -3,4 +3,4 @@ from . import analytics
 
 @analytics.route('/')
 def index():
- return render_template('analytics/index.html')
+ return render_template('analytics/dashboard.html')
