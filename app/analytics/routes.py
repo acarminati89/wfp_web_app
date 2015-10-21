@@ -1,6 +1,7 @@
 from flask import render_template
 from . import analytics
 from global_vars import g
+import psycopg2 as ps
 
 @analytics.route('/')
 def index():
