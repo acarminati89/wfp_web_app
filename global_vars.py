@@ -1,7 +1,7 @@
 import ConfigParser
 
 config = ConfigParser.ConfigParser()
-config.readfp(open('/opt/wfp/config.conf'))
+config.readfp(open('./config.conf'))
 
 g = {
     # DATABASE INFO

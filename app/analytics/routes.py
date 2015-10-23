@@ -4,10 +4,6 @@ from global_vars import g
 import psycopg2 as ps
 
 @analytics.route('/')
-def index():
- return render_template('analytics/index.html')
-
-@analytics.route('/dashboard')
 def dashboard():
  return render_template('analytics/dashboard_pure_html.html')
 
