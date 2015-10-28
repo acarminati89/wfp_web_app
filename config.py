@@ -1,4 +1,8 @@
 import os
+import ConfigParser
+
+config = ConfigParser.ConfigParser()
+config.readfp(open('config.conf'))
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -6,7 +10,7 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
     SECRET_KEY = os.environ.get('SECRET_KEY') or 't0p s3cr3t'
-    POSTGRES_DATABASE_URI = os.environ.get('DEV_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = config.get('warehouse', 'SQLALCHEMY_DB_URI')
 
 class TestingConfig(Config):
     TESTING = True
@@ -20,4 +24,13 @@ config = {
     'testing': TestingConfig,
     'production': ProductionConfig,
     'default': DevelopmentConfig
+}
+
+database = {
+    'drivername':config.get('warehouse', 'POSTGRES_DRIVER'),
+    'host': config.get('warehouse', 'POSTGRES_HOST'),
+    'port': config.get('warehouse', 'POSTGRES_PORT'),
+    'username': config.get('warehouse', 'POSTGRES_USER'),
+    'password': config.get('warehouse', 'POSTGRES_PWD'),
+    'database': config.get('warehouse', 'POSTGRES_DB')
 }

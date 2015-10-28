@@ -17,5 +17,4 @@ def db_test():
     cur = conn.cursor()
     sql_cmd = """SELECT account ,symbol ,realized ,unrealized FROM fact_daily_pl_report WHERE file_date = (SELECT max(file_date) FROM fact_daily_pl_report) ORDER BY account ,symbol;"""
     y = cur.execute(sql_cmd)
-    #y = [1, 2, 3, 4, 5, 6, 7, 8]
     return render_template('analytics/db_test.html', y=y)
