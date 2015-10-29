@@ -1,20 +1,22 @@
 from flask import render_template
 from . import analytics
-from global_vars import g
-import psycopg2 as ps
+from flask.ext.login import login_required
+
 
 @analytics.route('/')
+@login_required
 def dashboard():
- return render_template('analytics/dashboard_pure_html.html')
+    return render_template('analytics/dashboard_pure_html.html')
+
 
 @analytics.route('/db_test')
+@login_required
 def db_test():
-    conn = ps.connect(host=g['POSTGRES_HOST'],
-                  port='5432',
-                  user=g['POSTGRES_USER'],
-                  password=g['POSTGRES_PWD'],
-                  database=g['POSTGRES_DB'])
-    cur = conn.cursor()
-    sql_cmd = """SELECT account ,symbol ,realized ,unrealized FROM fact_daily_pl_report WHERE file_date = (SELECT max(file_date) FROM fact_daily_pl_report) ORDER BY account ,symbol;"""
-    y = cur.execute(sql_cmd)
+    y = 'no variable linked - this is static'
     return render_template('analytics/db_test.html', y=y)
+
+
+@analytics.route('/base')
+@login_required
+def base():
+    return render_template('base.html')

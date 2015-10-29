@@ -1,14 +1,16 @@
-from datetime import datetime
-from . import db
+from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import *
 from sqlalchemy.engine.url import URL
 import config
+from flask.ext.login import UserMixin
+
 
 def db_connect():
     return create_engine(URL(**config.database))
 
-class User(db.Model):
+
+class User(UserMixin, db.Model):
     __tablename__ = 'lu_user'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -17,10 +19,11 @@ class User(db.Model):
     is_admin = db.Column(db.Boolean)
     password_hash = db.Column(db.String(128))
     name = db.Column(db.String(64))
+    remember_me = db.Column(db.Boolean)
 
     @property
     def password(self):
-        raise AttributeError('password is not a readable attribute')
+        raise AttributeError('Password is not a readable attribute.')
 
     @password.setter
     def password(self, password):
@@ -29,29 +32,33 @@ class User(db.Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    @login_manager.user_loader
+    def load_user(user_id):
+        return User.query.get(int(user_id))
 
-class PLReport(db.Model):
-    __tablename__ = 'fact_daily_pl_report'
 
-    account = db.Column(db.String(50), primary_key=True)
-    symbol = db.Column(db.String(10), primary_key=True)
-    realized = db.Column(db.DECIMAL)
-    unrealized = db.Column(db.DECIMAL)
-    trades = db.Column(db.DECIMAL)
-    volume = db.Column(db.DECIMAL)
-    date = db.Column(db.String(10), primary_key=True)
-    ecn_fee = db.Column(db.DECIMAL)
-    sec_Fee = db.Column(db.DECIMAL)
-    commission = db.Column(db.DECIMAL)
-    nasdaq_fee = db.Column(db.DECIMAL)
-    nscc_Fee = db.Column(db.DECIMAL)
-    clearing_fee = db.Column(db.DECIMAL)
-    orders_yielding_exec = db.Column(db.DECIMAL)
-    position = db.Column(db.DECIMAL)
-    closing_price = db.Column(db.DECIMAL)
-    nyse_fee = db.Column(db.DECIMAL)
-    amex_fee = db.Column(db.DECIMAL)
-    nasdaq_etf = db.Column(db.DECIMAL)
-    file_name = db.Column(db.String(50))
-    file_date = db.Column(db.String(50))
+# class PLReport(db.Model):
+#     __tablename__ = 'fact_daily_pl_report'
+#
+#     account = db.Column(db.String(50), primary_key=True)
+#     symbol = db.Column(db.String(10), primary_key=True)
+#     realized = db.Column(db.DECIMAL)
+#     unrealized = db.Column(db.DECIMAL)
+#     trades = db.Column(db.DECIMAL)
+#     volume = db.Column(db.DECIMAL)
+#     date = db.Column(db.String(10), primary_key=True)
+#     ecn_fee = db.Column(db.DECIMAL)
+#     sec_Fee = db.Column(db.DECIMAL)
+#     commission = db.Column(db.DECIMAL)
+#     nasdaq_fee = db.Column(db.DECIMAL)
+#     nscc_Fee = db.Column(db.DECIMAL)
+#     clearing_fee = db.Column(db.DECIMAL)
+#     orders_yielding_exec = db.Column(db.DECIMAL)
+#     position = db.Column(db.DECIMAL)
+#     closing_price = db.Column(db.DECIMAL)
+#     nyse_fee = db.Column(db.DECIMAL)
+#     amex_fee = db.Column(db.DECIMAL)
+#     nasdaq_etf = db.Column(db.DECIMAL)
+#     file_name = db.Column(db.String(50))
+#     file_date = db.Column(db.String(50))
 

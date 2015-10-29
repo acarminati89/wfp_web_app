@@ -4,11 +4,13 @@ from app import db
 from flask.ext.script import Manager
 from app.models import User
 
+
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)
 
+
 @manager.command
-def adduser(email, username, admin=False):
+def adduser(first_name, last_name, email, username, admin=False):
     """Register a new user."""
     from getpass import getpass
     password = getpass()
@@ -17,7 +19,7 @@ def adduser(email, username, admin=False):
         import sys
         sys.exit('Error: passwords do not match.')
     db.create_all()
-    user = User(email=email, username=username, password=password, is_admin=admin)
+    user = User(name=first_name+" "+last_name, email=email, username=username, password=password, is_admin=admin)
     db.session.add(user)
     db.session.commit()
     print('User {0} was registered successfully.'.format(username))
