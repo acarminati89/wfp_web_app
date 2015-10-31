@@ -1,6 +1,8 @@
 {% import "Bootstrap/wtf.html" as wtf %}
 
-{% block page_content %}
+{% extends "template.html" %}
+
+{% block body %}
 
 {{wtf.quick_form(form)}}
 

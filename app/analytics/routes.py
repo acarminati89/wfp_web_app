@@ -2,17 +2,10 @@ from flask import render_template
 from . import analytics
 from flask.ext.login import login_required
 
-
-# @analytics.route('/')
-# @login_required
-# def dashboard():
-#     return render_template('analytics/dashboard_pure_html.html')
-
-
 @analytics.route('/')
-# @login_required
+@login_required
 def dashboard():
-    return render_template('template.html')
+    return render_template('analytics/dashboard.html')
 
 
 @analytics.route('/db_test')
