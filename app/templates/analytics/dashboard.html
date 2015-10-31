@@ -42,8 +42,10 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Overview</a></li>
+            <!--
             <li><a href="#">Industry Analysis</a></li>
             <li><a href="#">Trader Performance</a></li>
+            -->
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -83,11 +85,14 @@
                 </tr>
               </thead>
               <tbody>
+                {% for row in y %}
                 <tr>
-                  <td>Anthony</td>
-                  <td>AA</td>
-                  <td>100.00</td>
+                  <td>{{row[0]}}</td>
+                  <td>{{row[1]}}</td>
+                  <td>{{row[2]}}</td>
                 </tr>
+                {% endfor %}
+                <!--
                 <tr>
                   <td>Anthony</td>
                   <td>TSLA</td>
@@ -113,6 +118,7 @@
                   <td>ENVA</td>
                   <td>120.00</td>
                 </tr>
+                -->
               </tbody>
             </table>
           </div>
