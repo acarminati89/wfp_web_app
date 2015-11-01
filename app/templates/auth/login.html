@@ -3,7 +3,11 @@
 {% extends "template.html" %}
 
 {% block body %}
-
-{{wtf.quick_form(form)}}
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            {{wtf.quick_form(form)}}
+        </div>
+    </div>
+</div>
 {% endblock %}

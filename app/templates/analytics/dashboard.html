@@ -4,8 +4,6 @@
     {% block head %}
       {{super()}}
     {% endblock %}
-
-    {% block title %}Overview{% endblock %}
   </head>
 
   <body>
@@ -25,11 +23,6 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
-            <!--
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
-            -->
           </ul>
         </div>
       </div>
@@ -52,26 +45,26 @@
           <h1 class="page-header">Overview</h1>
 
           <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>YTD P&L</h4>
-              <span class="text-muted">Something else</span>
+            <div class="col-xs-6 col-sm-4 placeholder">
+              <!--img data-src="holder.js/200x200/auto/sky" class="img-responsive"-->
+              <h2>YTD P&L</h2>
+              <h3>{{ytd_pnl}}</h3>
             </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
+            <div class="col-xs-6 col-sm-4 placeholder">
+              <!--img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail"-->
+              <h2>QTD P&L</h2>
+              <h3>{{qtd_pnl}}</h3>
+            </div>
+            <div class="col-xs-6 col-sm-4 placeholder">
+              <!--img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail"-->
+              <h2>MTD P&L</h2>
+              <h3>{{mtd_pnl}}</h3>
+            </div>
+            <!--div class="col-xs-6 col-sm-3 placeholder">
               <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>MTD P&L</h4>
+              <h2>Exposure</h2>
               <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/sky" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Last Day P&L</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Current Exposure</h4>
-              <span class="text-muted">Something else</span>
-            </div>
+            </div-->
           </div>
 
           <h2 class="sub-header">YTD Trading Performance</h2>
@@ -80,7 +73,6 @@
               <thead>
                 <tr>
                   <th>Trader</th>
-                  <th>Ticker</th>
                   <th>P&L</th>
                 </tr>
               </thead>
@@ -89,36 +81,8 @@
                 <tr>
                   <td>{{row[0]}}</td>
                   <td>{{row[1]}}</td>
-                  <td>{{row[2]}}</td>
                 </tr>
                 {% endfor %}
-                <!--
-                <tr>
-                  <td>Anthony</td>
-                  <td>TSLA</td>
-                  <td>-20.00</td>
-                </tr>
-                <tr>
-                  <td>Dennis</td>
-                  <td>F</td>
-                  <td>90.00</td>
-                </tr>
-                <tr>
-                  <td>Dennis</td>
-                  <td>SDRL</td>
-                  <td>-30.00</td>
-                </tr>
-                <tr>
-                  <td>Scott</td>
-                  <td>VGGL</td>
-                  <td>-30.00</td>
-                </tr>
-              <tr>
-                  <td>Stefan</td>
-                  <td>ENVA</td>
-                  <td>120.00</td>
-                </tr>
-                -->
               </tbody>
             </table>
           </div>
@@ -133,5 +97,4 @@
       {{super()}}
     {% endblock %}
   </body>
-
 </html>
