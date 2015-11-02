@@ -13,7 +13,7 @@ def dashboard():
     ytd_pnl = db.engine.execute(sql_ytd_pnl)
     qtd_pnl = db.engine.execute(sql_qtd_pnl)
     mtd_pnl = db.engine.execute(sql_mtd_pnl)
-    grid_overview = db.engine.execute(sql_grid_overview)
+    # grid_overview = db.engine.execute(sql_grid_overview)
 
     for row in ytd_pnl:
         ytd_pnl = locale.currency(row[0], '$', grouping=True)
@@ -24,12 +24,24 @@ def dashboard():
     for row in mtd_pnl:
         mtd_pnl = locale.currency(row[0], '$', grouping=True)
 
-    y = list()
-    for i in grid_overview:
-        y.append((i[0], locale.currency(i[1], '$', grouping=True)))
+    # y = list()
+    # for i in grid_overview:
+    #     y.append((i[0], locale.currency(i[1], '$', grouping=True)))
 
     return render_template('analytics/dashboard.html'
                            , ytd_pnl=ytd_pnl
                            , qtd_pnl=qtd_pnl
-                           , mtd_pnl=mtd_pnl
+                           , mtd_pnl=mtd_pnl)
+                           # , y=y)
+
+@analytics.route('/trader_performance')
+@login_required
+def trader_performance():
+    grid_overview = db.engine.execute(sql_grid_overview)
+
+    y = list()
+    for i in grid_overview:
+        y.append((i[0], locale.currency(i[1], '$', grouping=True)))
+
+    return render_template('analytics/trader_performance.html'
                            , y=y)
