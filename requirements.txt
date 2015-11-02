@@ -1,0 +1,8 @@
+ConfigParser
+flask
+flask-login
+flask-script
+flask-sqlalchemy
+flask-wtf
+flask-bootstrap
+wtforms
