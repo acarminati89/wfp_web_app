@@ -23,4 +23,4 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return 'Successfully Logged Out. Goodbye.'
+    return render_template('auth/logout.html')
