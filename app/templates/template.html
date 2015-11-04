@@ -28,6 +28,17 @@
           </button>
           <a class="navbar-brand" href="{{url_for('analytics.dashboard')}}">Analytics Portal</a>
         </div>
+
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            {% if not session.logged_in %}
+            <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+            {% else %}
+            <li><a href="{{url_for('auth.login')}}">Login</a></li>
+            {% endif %}
+          </ul>
+        </div>
+
       </div>
     </div>
     {% endblock %}

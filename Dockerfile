@@ -18,7 +18,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Refresh apt-get meta-data and install python tools
 RUN apt-get update
 RUN apt-get install -y python python-dev python-distribute python-pip build-essential gunicorn
-RUN apt-get install -y libxslt-dev libxml2-dev libpam-dev libedit-dev
+RUN apt-get install -y libxslt-dev libxml2-dev libpam-dev libedit-dev libpq-dev
 RUN apt-get install -y awscli
 
 # Set new working directory to application root
@@ -35,12 +35,12 @@ RUN pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U
 RUN pip install -r /src/requirements.txt
 
 # Expose ports
-EXPOSE 22 8000
+EXPOSE 22 8000 5432
 
 # Add Locale
 RUN locale-gen en_US en_US.UTF-8
 RUN dpkg-reconfigure locales
 
 # Run application
-# CMD ["python", "/src/app.py"]
-
+WORKDIR /src
+CMD ["gunicorn", "manage:app"]
