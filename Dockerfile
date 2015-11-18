@@ -35,7 +35,7 @@ RUN pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U
 RUN pip install -r /src/requirements.txt
 
 # Expose ports
-EXPOSE 22 8000 5432
+EXPOSE 22 8000 5432 80
 
 # Add Locale
 RUN locale-gen en_US en_US.UTF-8
@@ -43,4 +43,4 @@ RUN dpkg-reconfigure locales
 
 # Run application
 WORKDIR /src
-CMD ["gunicorn", "manage:app"]
+CMD ["gunicorn", "-b 0.0.0.0:80", "manage:app"]
