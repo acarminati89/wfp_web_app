@@ -15,7 +15,8 @@ def login():
             return redirect(url_for('.login'))
         # login_user(user, form.remember_me.data)
         login_user(user)
-        return redirect(request.args.get('next') or url_for('analytics.overview')) # redirect(request.args.get('next') or url_for('analytics.dashboard_pure_html'))
+        # return redirect(request.args.get('next') or url_for('analytics.overview'))
+        return redirect(request.args.get('next') or url_for('analytics.overview'))
     return render_template('auth/login.html', form=form)
 
 
@@ -23,4 +24,4 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return 'Successfully Logged Out. Goodbye.'
+    return render_template('auth/logout.html')
