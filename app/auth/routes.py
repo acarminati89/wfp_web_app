@@ -14,9 +14,9 @@ def login():
             flash('Invalid email or password.')
             return redirect(url_for('.login'))
         # login_user(user, form.remember_me.data)
-        login_user(user)
+        login_user(user, remember=False)
         # return redirect(request.args.get('next') or url_for('analytics.overview'))
-        return redirect(request.args.get('next') or url_for('analytics.overview'))
+        return redirect(url_for('analytics.dashboard'))
     return render_template('auth/login.html', form=form)
 
 
