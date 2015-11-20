@@ -3,6 +3,8 @@
   <head>
     {% block head %}
       {{super()}}
+      <link href="{{ css_files }}" rel="stylesheet" type="text/css">
+      <script src="{{ js_files }}"></script>
     {% endblock %}
   </head>
 
@@ -61,6 +63,15 @@
 
         </div>
       </div>
+    </div>
+
+    <div class="container-fluid">
+
+          <div class="colsm-9 col-md-10 main col-sm-offset-3 col-md-offset-2">
+            {{div | safe}}
+            {{script | safe}}
+        </div>
+
     </div>
     {% endblock %}
     <!-- Bootstrap core JavaScript

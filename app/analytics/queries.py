@@ -35,3 +35,29 @@ INNER JOIN dim_calendar_ytd dim ON fct.trade_date = dim.ytd_day
 WHERE dim.day = (select max(trade_date) from fact_daily_pl_report);
 --	AND unrealized = 0;
 '''
+
+sql_cum_pnl = '''
+select
+    distinct trade_date
+    ,CAST(sum(realized) OVER (ORDER BY trade_date) AS INTEGER) AS cum_amt
+from fact_daily_pl_report
+order by trade_date;
+'''
+
+sql_top_daily_trades = '''
+SELECT max.trade_date
+	,account
+	,symbol
+	,max.max_realized
+FROM (
+	SELECT trade_date
+		,max(realized) AS max_realized
+	FROM fact_daily_pl_report
+	GROUP BY trade_date
+	) max
+INNER JOIN fact_daily_pl_report fct
+	ON max.trade_date = fct.trade_date
+		AND max.max_realized = fct.realized
+WHERE max_realized <> 0
+ORDER BY max.trade_date;
+'''
