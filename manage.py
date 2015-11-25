@@ -25,6 +25,4 @@ def adduser(first_name, last_name, email, username, admin=False):
     print('User {0} was registered successfully.'.format(username))
 
 if __name__ == '__main__':
-    # server = Server(host='0.0.0.0', port='8080')
-    # manager.run(server)
     manager.run()

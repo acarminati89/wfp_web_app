@@ -10,8 +10,6 @@ from bokeh.plotting import figure
 from bokeh.resources import CDN
 from bokeh.embed import components
 import datetime
-from bokeh.util.string import encode_utf8
-
 
 locale.setlocale(locale.LC_ALL, 'en_US')
 
