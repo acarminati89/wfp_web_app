@@ -3,6 +3,7 @@ from . import auth
 from forms import *
 from ..models import User
 from flask.ext.login import login_user, login_required, logout_user
+from app import db
 
 
 @auth.route('/login', methods=['GET', 'POST'])
@@ -24,4 +25,5 @@ def login():
 @login_required
 def logout():
     logout_user()
+    db.close()
     return render_template('auth/logout.html')
